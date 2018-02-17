@@ -1,6 +1,4 @@
-provider "aws" {
-  region = "us-east-1"
-}
+provider "aws" {}
 
 # create an S3 bucket to store the state file in
 resource "aws_s3_bucket" "example-state-storage-s3" {
@@ -37,14 +35,3 @@ resource "aws_dynamodb_table" "dynamodb-example-state-lock" {
 
   depends_on = ["aws_s3_bucket.example-state-storage-s3"]
 }
-
-# Setup backend
-#terraform {
-#  backend "s3" {
-#    encrypt = true
-#    bucket = "example-remote-state-storage-s3"
-#    dynamodb_table = "example-state-lock-dynamo"
-#    region = "us-east-1"
-#    key = "example.tfstate"
-#  }
-#}
