@@ -38,7 +38,7 @@ resource "aws_dynamodb_table" "dynamodb-terraform-state-lock" {
     Name = "DynamoDB Terraform State Lock Table"
   }
 
-  depends_on = ["aws_s3_bucket.${var.site}-terraform-state-storage-s3"]
+  depends_on = ["aws_s3_bucket.terraform-state-storage-s3"]
 }
 
 # create a KMS key for state encryption
